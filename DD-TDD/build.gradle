@@ -1,4 +1,5 @@
 apply plugin: 'groovy'
+apply plugin: 'sonar'
 
 repositories {
 	mavenCentral()
@@ -8,3 +9,5 @@ dependencies {
 	groovy 'org.codehaus.groovy:groovy-all:1.8.5' 
 	testCompile 'org.spockframework:spock-core:0.5-groovy-1.8'	
 }
+
+project("Putting the D&D in TDD - Groovy Style").sonar.project.language = "groovy"
