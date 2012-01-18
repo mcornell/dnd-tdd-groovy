@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>codemash</groupId>
+  <artifactId>evercraft</artifactId>
+  <version>0.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Putting the D&amp;D in TDD - Groovy</name>
+  <build> 
+    <sourceDirectory>src/main/groovy</sourceDirectory>
+  </build> 
+  <properties>
+    <sonar.language>grvy</sonar.language>
+    <sonar.dynamicAnalysis>false</sonar.dynamicAnalysis>
+  </properties>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.codehaus.groovy</groupId>
+  		<artifactId>groovy-all</artifactId>
+  		<version>1.8.5</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.spockframework</groupId>
+  		<artifactId>spock-core</artifactId>
+  		<version>0.5-groovy-1.8</version>
+  		<scope>test</scope>
+  	</dependency>
+  </dependencies>
+</project>
