@@ -1,4 +1,6 @@
+DD-TDD/.settings
+DD-TDD/target
+DD-TDD/.project
+DD-TDD/.classpath
 /DD-TDD/build
-/DD-TDD/target
 /DD-TDD/.gradle
-/DD-TDD/.settings

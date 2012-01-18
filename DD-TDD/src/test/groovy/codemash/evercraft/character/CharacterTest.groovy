@@ -2,6 +2,7 @@ package codemash.evercraft.character;
 
 import spock.lang.*
 import codemash.evercraft.combat.*;
+import codemash.evercraft.classes.*;
 
 class CharacterTest extends Specification {
 	def character
@@ -182,5 +183,36 @@ class CharacterTest extends Specification {
 			character.experiencePoints = 1000
 		then:
 			character.hitPoints == 2
+	}
+	
+	def "a level 2 character gets +1 to their attack rolls"() {
+		when:
+			character.experiencePoints = 1000
+		then:
+			character.attackAdjustment == 1
+	}
+	
+	def "a level 1 character gets no attack roll adjustment"() {
+		expect:
+			character.attackAdjustment == 0
+	}
+	
+	def "a character gets +1 bonus for attack rolls every even level"() {
+		when:
+			character.experiencePoints = 4000
+		then:
+			character.attackAdjustment == 2
+	}
+	
+	def "a character has a class"() {
+		expect:
+			character.classType != null
+	}
+	
+	def "a character's class must be of a accepted type"() {
+		given:
+			character = new Character("Billy", ClassType.FIGHTER)
+		expect:
+			character.classType.name() == "FIGHTER"
 	}
 }
