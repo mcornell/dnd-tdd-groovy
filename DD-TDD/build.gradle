@@ -8,3 +8,13 @@ dependencies {
 	groovy 'org.codehaus.groovy:groovy-all:1.8.5' 
 	testCompile 'org.spockframework:spock-core:0.5-groovy-1.8'	
 }
+
+buildscript {
+    // using a variable to make wiki look cleaner
+    def githubBase = 'https://github.com/valkolovos/gradle_cobertura/raw/master/ivy'
+    apply from: "${githubBase}/gradle_cobertura/gradle_cobertura/1.0-rc4/coberturainit.gradle"
+}
+
+cobertura {
+  coverageFormat = 'xml'
+}
