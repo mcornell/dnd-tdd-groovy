@@ -2,7 +2,7 @@ package codemash.evercraft.character;
 
 import spock.lang.*
 
-class AbiiltyTest extends Specification {
+class AbilityTest extends Specification {
 	Ability ability = new Ability(AbilityName.STRENGTH)
 	
 	def "an ability defaults to a score of 10"() {
