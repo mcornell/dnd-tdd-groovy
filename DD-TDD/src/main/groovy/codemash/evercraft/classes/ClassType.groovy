@@ -1,7 +1,7 @@
 package codemash.evercraft.classes
 
 enum ClassType {
-	FIGHTER, PEASANT
+	FIGHTER, ROGUE, PEASANT
 	
 	def hitPointsPerLevel() {
 		switch (this) {
@@ -20,4 +20,18 @@ enum ClassType {
 				return Math.floor(level / 2)
 		}
 	}
+	
+	def getCriticalHitDamage(int damage) {
+		if (damage < 1) {
+			return  1
+		} else {
+			switch (this) {
+				case ROGUE:
+					return damage * 3
+				default:
+					return damage * 2
+			}
+		}
+	}
+	
 }

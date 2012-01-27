@@ -40,7 +40,7 @@ class Combat {
 		int damage = getBaseDamage(attacker)
 		
 		if (roll == CRITICAL_HIT) {
-			damage = getCriticalHitDamage(damage)
+			damage = getCriticalHitDamage(attacker, damage)
 		} else {
 			damage = Math.max(damage, 1)
 		}
@@ -52,12 +52,8 @@ class Combat {
 		return BASE_DAMAGE + attacker.strength.modifier
 	}
 	
-	private static int getCriticalHitDamage(int damage) {
-		if (damage < 1) {
-			return  1
-		} else {
-			return damage * 2
-		}
+	private static int getCriticalHitDamage(Character attacker, int damage) {
+		return attacker.getCriticalHitDamage(damage) 
 	}
 	
 	private static addExperience(Character attacker) {
