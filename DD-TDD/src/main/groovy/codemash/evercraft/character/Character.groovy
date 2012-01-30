@@ -44,4 +44,8 @@ class Character {
 		return classType.attackAdjustment(getLevel())
 	}
 	
+	int calculateCriticalHitDamage(int damage) {
+		return classType.calculateCriticalHitDamage(damage)
+	}
+	
 }

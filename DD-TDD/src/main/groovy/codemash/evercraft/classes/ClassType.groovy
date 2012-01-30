@@ -21,7 +21,7 @@ enum ClassType {
 		}
 	}
 	
-	def getCriticalHitDamage(int damage) {
+	def calculateCriticalHitDamage(int damage) {
 		if (damage < 1) {
 			return  1
 		} else {
