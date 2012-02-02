@@ -1,8 +1,7 @@
 apply plugin: 'groovy'
 
 version='0.2-SNAPSHOT'
-group = 'com.codemash'
-artifact = 'evercraft'
+group = 'com.codemash.evercraft'
 
 repositories {
 	mavenCentral()
@@ -12,12 +11,6 @@ dependencies {
 	groovy 'org.codehaus.groovy:groovy-all:1.8.5' 
 	testCompile 'org.spockframework:spock-core:0.5-groovy-1.8'	
 }
-
-//buildscript {
-//	apply from: 'https://github.com/valkolovos/gradle_cobertura/raw/master/repo/gradle_cobertura/gradle_cobertura/1.0/coberturainit.gradle'
-//}
-
-
 
 buildscript {
 	def artifactPattern = "${projectDir}/repo/[organization]/[module]/[revision]/[artifact]-[revision].[ext]"
