@@ -52,10 +52,6 @@ class Combat {
 		return BASE_DAMAGE + attacker.strength.modifier
 	}
 	
-//	private static int calculateCriticalHitDamage(Character attacker, int damage) {
-//		return attacker.calculateCriticalHitDamage(damage) 
-//	}
-	
 	private static addExperience(Character attacker) {
 		attacker.experiencePoints += XP_INCREMENT
 	}

@@ -1,5 +1,9 @@
 apply plugin: 'groovy'
 
+version='0.2-SNAPSHOT'
+group = 'com.codemash'
+artifact = 'evercraft'
+
 repositories {
 	mavenCentral()
 }
@@ -10,10 +14,30 @@ dependencies {
 }
 
 //buildscript {
-//    def githubBase = 'https://github.com/valkolovos/gradle_cobertura/raw/master/ivy'
-//    apply from: "${githubBase}/gradle_cobertura/gradle_cobertura/1.0-rc4/coberturainit.gradle"
+//	apply from: 'https://github.com/valkolovos/gradle_cobertura/raw/master/repo/gradle_cobertura/gradle_cobertura/1.0/coberturainit.gradle'
 //}
-//
-//cobertura {
-//  coverageFormat = 'xml'
-//}
+
+
+
+buildscript {
+	def artifactPattern = "${projectDir}/repo/[organization]/[module]/[revision]/[artifact]-[revision].[ext]"
+	def ivyPattern = "${projectDir}/repo/[organization]/[module]/[revision]/ivy.xml"
+    repositories {
+        add(new org.apache.ivy.plugins.resolver.FileSystemResolver()) {
+            name = 'local_cobertura' // or whatever you want to put here
+            addArtifactPattern artifactPattern
+            addIvyPattern ivyPattern
+        }
+		mavenCentral()
+		mavenLocal()
+    }
+    dependencies {
+        classpath 'gradle_cobertura:gradle_cobertura:1.0'
+    }
+}
+apply plugin: com.orbitz.gradle.cobertura.CoberturaPlugin
+
+cobertura {
+  coverageFormat = 'xml'
+}
+
