@@ -22,4 +22,12 @@ class RogueTest extends Specification {
 		expect:
 			Combat.attack(rogue, victim, 10)
 	}
+	
+	def "Rouge applies the dexterity to the attack roll instead of strength"() {
+		given:
+			rogue.strength.score = 13
+			rogue.dexterity.score = 14
+		expect:
+			Combat.attack(rogue, victim, 8)
+	}
 }

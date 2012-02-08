@@ -14,12 +14,21 @@ enum ClassType {
 		}
 	}
 	
-	def attackAdjustment(int level) {
+	def levelAttackAdjustment(int level) {
 		switch (this) {
 			case FIGHTER:
 				return --level
 			default:
 				return Math.floor(level / 2)
+		}
+	}
+	
+	def abilityAttackAdjustment(attacker) {
+		switch (this) {
+				case ROGUE:
+					return attacker.dexterity.modifier
+				default:
+					return attacker.strength.modifier
 		}
 	}
 	

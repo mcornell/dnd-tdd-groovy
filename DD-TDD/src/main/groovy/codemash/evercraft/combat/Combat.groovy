@@ -30,7 +30,7 @@ class Combat {
 	}
 	
 	private static boolean hit(Character attacker, Character victim, int roll) {
-		int attackValue = roll + attacker.strength.modifier + attacker.attackAdjustment
+		int attackValue = roll + attacker.attackAdjustment
 		
 		int defenceValue = attacker.classType.ignoreDefence(victim)
 		

@@ -41,7 +41,7 @@ class Character {
 	}
 	
 	int getAttackAdjustment() {
-		return classType.attackAdjustment(getLevel())
+		return classType.levelAttackAdjustment(getLevel()) + classType.abilityAttackAdjustment(this)
 	}
 	
 	int calculateCriticalHitDamage(int damage) {
