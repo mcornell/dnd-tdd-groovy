@@ -1,15 +1,26 @@
 apply plugin: 'groovy'
+apply plugin: 'sonar'
 
+group = 'codemash'
 version='0.2-SNAPSHOT'
-group = 'com.codemash.evercraft'
+
+jar {
+	baseName = 'evercraft'
+}
+
+buildDir = 'target'
 
 repositories {
-	mavenCentral()
+	//mavenCentral()
+	//mavenLocal()
+	maven {
+		url "C:/Documents and Settings/cornelm5/.m2/repository"
+	}
 }
 
 dependencies {
 	groovy 'org.codehaus.groovy:groovy-all:1.8.5' 
-	testCompile 'org.spockframework:spock-core:0.5-groovy-1.8'	
+	testCompile 'org.spockframework:spock-core:0.5-groovy-1.8'
 }
 
 buildscript {
@@ -32,5 +43,34 @@ apply plugin: com.orbitz.gradle.cobertura.CoberturaPlugin
 
 cobertura {
   coverageFormat = 'xml'
+  coverageSourceDirs = ['src/main/groovy'] as Set
 }
+project.tasks.getByName('cobertura').dependsOn.add('test')
 
+project.tasks.getByName('sonarAnalyze').dependsOn.add('build')
+project.tasks.getByName('sonarAnalyze').dependsOn.add('cobertura')
+
+sonarUrl = System.getProperty('sonar.host.url') ?: 'http://localhost:9000/'
+
+sonar {
+	server {
+		url = sonarUrl
+	}
+  
+	database {
+	  url = System.getProperty('sonar.jdbc.url') ?: 'jdbc:derby://localhost:1527/sonar'
+	  driverClassName = System.getProperty('sonar.jdbc.driver') ?: 'org.apache.derby.jdbc.ClientDriver'
+	  username = System.getProperty('sonar.jdbc.username') ?: 'sonar'
+	  password = System.getProperty('sonar.jdbc.password') ?: 'sonar'
+	}
+  
+	project {
+		withProjectProperties { props ->
+			props['sonar.language'] = 'grvy'
+			//props['dynamicAnalysis'] = 'false'
+			props['sonar.cpd.grvy.skip'] = 'true'
+			props['dynamicAnalysis'] = 'reuseReports'
+			props['sonar.cobertura.reportPath'] = "${reportsDir}/cobertura/coverage.xml"
+		}
+	}
+}

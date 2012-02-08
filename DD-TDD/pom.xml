@@ -89,12 +89,14 @@
           <useFile>false</useFile>
         </configuration>
       </plugin>
+      
 		</plugins>
 	</build>
 	<properties>
 		<sonar.language>grvy</sonar.language>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-    <sonar.cobertura.reportPath>build/reports/cobertura/coverage.xml</sonar.cobertura.reportPath>
+        <sonar.cobertura.reportPath>target/reports/cobertura/coverage.xml</sonar.cobertura.reportPath>
+        <sonar.surefire.reportsPath>target/test-results</sonar.surefire.reportsPath>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -107,6 +109,11 @@
 			<artifactId>spock-core</artifactId>
 			<version>0.5-groovy-1.8</version>
 			<scope>test</scope>
-		</dependency>
+		</dependency>   
+		       <dependency>
+      <groupId>org.codenarc</groupId>
+      <artifactId>CodeNarc</artifactId>
+      <version>0.16.1</version> 
+      </dependency>
 	</dependencies>
 </project>
