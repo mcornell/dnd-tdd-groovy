@@ -1,0 +1,1 @@
+A Partial Implementation of the EverCraft Kata as presented by Guy Royse (@guyroyse) and George Walters II (@walterg2) at CodeMash 2.0.1.2
