@@ -32,6 +32,10 @@ class Character {
 		return getHitPoints() > damage
 	}
 	
+	int getArmorClass() {
+		return armorClass + dexterity.modifier
+	}
+	
 	int getHitPoints() {
 		return Math.max((classType.hitPointsPerLevel() + constitution.modifier) * getLevel(), getLevel())
 	}

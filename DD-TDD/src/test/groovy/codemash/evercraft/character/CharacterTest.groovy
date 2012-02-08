@@ -90,6 +90,20 @@ class CharacterTest extends Specification {
 			character.charisma.score == 10
 	}
 	
+	def "a character's positive dexterity modifier will add that to the armor class"() {
+		given:
+			character.dexterity.score = 14
+		expect:
+			character.armorClass == 12
+	}
+	
+	def "a character's negative dexterity modifier will add that to the armor class"() {
+		given:
+			character.dexterity.score = 5
+		expect:
+			character.armorClass == 7
+	}
+	
 	def "a character's positive constitution modifier will add that number of hit points"() {
 		given:
 			character.constitution.score = 14
