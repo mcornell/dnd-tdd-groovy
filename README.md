@@ -1,1 +1,1 @@
-A Partial Implementation of the EverCraft Kata as presented by Guy Royse (@guyroyse) and George Walters II (@walterg2) at CodeMash 2.0.1.2
+A Partial Implementation of the [EverCraft Kata](https://github.com/walterg2/EverCraft-Kata) as presented by [Guy Royse](https://github.com/guyroyse/) and[ George Walters II](https://github.com/walterg2/) at CodeMash 2.0.1.2
