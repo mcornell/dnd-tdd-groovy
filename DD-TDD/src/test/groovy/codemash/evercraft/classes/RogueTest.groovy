@@ -16,10 +16,10 @@ class RogueTest extends Specification {
 			victim.damage == 3
 	}
 
-//	def "Rogue will ignore an opponent's dexterity modifier to AC when attacking"() {
-//		when:
-//			victim.dexterity.score = 12
-//			Combat.attack(rogue, victim, )
-//		then:
-//	}
+	def "Rogue will ignore an opponent's dexterity modifier to AC when attacking"() {
+		given:
+			victim.dexterity.score = 12
+		expect:
+			Combat.attack(rogue, victim, 10)
+	}
 }

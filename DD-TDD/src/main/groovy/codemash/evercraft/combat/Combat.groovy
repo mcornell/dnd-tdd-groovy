@@ -31,7 +31,8 @@ class Combat {
 	
 	private static boolean hit(Character attacker, Character victim, int roll) {
 		int attackValue = roll + attacker.strength.modifier + attacker.attackAdjustment
-		int defenceValue = victim.armorClass + victim.dexterity.modifier
+		
+		int defenceValue = attacker.classType.ignoreDefence(victim)
 		
 		return (roll > CRITICAL_MISS && attackValue >= defenceValue)
 	}

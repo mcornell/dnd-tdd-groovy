@@ -1,5 +1,7 @@
 package codemash.evercraft.classes
 
+import codemash.evercraft.character.Character
+
 enum ClassType {
 	FIGHTER, ROGUE, PEASANT
 	
@@ -31,6 +33,15 @@ enum ClassType {
 				default:
 					return damage * 2
 			}
+		}
+	}
+	
+	def ignoreDefence(Character victim) {
+		switch (this) {
+			case ROGUE:
+				return victim.armorClass
+			default:
+				return victim.armorClass + victim.dexterity.modifier
 		}
 	}
 	
