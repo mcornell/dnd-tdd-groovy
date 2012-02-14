@@ -30,4 +30,25 @@ class WarMonkTest extends Specification {
 		expect:
 			warmonk.effectiveArmorClass == 12
 	}
+	
+	def "War Monks attack roll is increased by 1 every 2nd level"() {
+		given:
+			warmonk.experiencePoints = 1000
+		expect:
+			Combat.attack(warmonk, victim, 9)
+	}
+	
+	def "War Monks attack roll is increased by 1 every 3rd level"() {
+		given:
+			warmonk.experiencePoints = 2000
+		expect:
+			Combat.attack(warmonk, victim, 8)
+	}
+	
+	def "War Monks attack roll is increase does not double increase on 6th level"() {
+		given:
+			warmonk.experiencePoints = 6000
+		expect:
+			Combat.attack(warmonk, victim, 5) == false
+	}
 }

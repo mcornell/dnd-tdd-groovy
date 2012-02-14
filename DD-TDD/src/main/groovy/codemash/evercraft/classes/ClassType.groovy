@@ -20,6 +20,12 @@ enum ClassType {
 		switch (this) {
 			case FIGHTER:
 				return --level
+			case WAR_MONK:
+				int levelAdj = 0
+				(1..level).each { i ->
+					if (level % 2 == 0 || level % 3 == 0) levelAdj++
+				}
+				return levelAdj 
 			default:
 				return Math.floor(level / 2)
 		}
