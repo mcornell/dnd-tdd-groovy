@@ -1,24 +1,28 @@
 package codemash.evercraft.classes
 
 import codemash.evercraft.character.Character
+import codemash.evercraft.character.Alignment
 
 enum ClassType {
-	FIGHTER, ROGUE, WAR_MONK, PEASANT
+	FIGHTER, ROGUE, WAR_MONK, PALADIN, PEASANT
 	
 	def hitPointsPerLevel() {
 		switch (this) {
 			case FIGHTER:
-				return 10;
+				return 10
 			case WAR_MONK:
-				return 6;
+				return 6
+			case PALADIN:
+				return 8
 			default:
-				return 5;
+				return 5
 		}
 	}
 	
 	def levelAttackAdjustment(int level) {
 		switch (this) {
 			case FIGHTER:
+			case PALADIN:
 				return --level
 			case WAR_MONK:
 				int levelAdj = 0
@@ -81,4 +85,30 @@ enum ClassType {
 		}
 	}
 	
+	def victimAdjustment(Character victim) {
+		switch (this) {
+			case PALADIN:
+				if (victim.alignment == Alignment.EVIL) return 2
+			default:
+				return 0
+		}
+	}
+	
+	def getAlignmentDamage(Character victim) {
+		switch (this) {
+			case PALADIN:
+				if (victim.alignment == Alignment.EVIL) return 2
+			default:
+				return 0
+		}
+	}
+	
+	def damageMultiplier(Character victim) {
+		switch (this) {
+			case PALADIN:
+				if (victim.alignment == Alignment.EVIL) return 3
+			default:
+				return 1
+		}
+	}
 }

@@ -51,4 +51,8 @@ class Character {
 	int getEffectiveArmorClass() {
 		return classType.effectiveArmorClass(this)
 	}
+	
+	int getAlignmentDamage(Character victim) {
+		return classType.getAlignmentDamage(victim)
+	}
 }

@@ -5,7 +5,11 @@ import codemash.evercraft.character.Character
 
 class FighterTest extends Specification {
 	
-	def fighter = new Character("Rex", ClassType.FIGHTER)
+	def fighter
+	
+	def setup() {
+		fighter = new Character("Rex", ClassType.FIGHTER)
+	}
 	
 	def "a fighter gets 10 hit points for every level up"() {
 		given:

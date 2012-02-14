@@ -30,7 +30,7 @@ class Combat {
 	}
 	
 	private static boolean hit(Character attacker, Character victim, int roll) {
-		int attackValue = roll + attacker.attackAdjustment
+		int attackValue = roll + attacker.attackAdjustment + attacker.classType.victimAdjustment(victim)
 		
 		int defenceValue = attacker.classType.ignoreDefence(victim)
 		
@@ -38,7 +38,7 @@ class Combat {
 	}
 	
 	private static applyDamage(Character attacker, Character victim, int roll) {
-		int damage = getBaseDamage(attacker)
+		int damage = attacker.classType.damageMultiplier(victim) * getBaseDamage(attacker)
 		
 		if (roll == CRITICAL_HIT) {
 			damage = attacker.calculateCriticalHitDamage(damage)
@@ -46,6 +46,7 @@ class Combat {
 			damage = Math.max(damage, 1)
 		}
 		
+		damage += attacker.getAlignmentDamage(victim)
 		victim.damage += damage
 	}
 	
