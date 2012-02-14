@@ -2,7 +2,7 @@ apply plugin: 'groovy'
 apply plugin: 'sonar'
 
 group = 'codemash'
-version='0.2-SNAPSHOT'
+version='0.2'
 
 jar {
 	baseName = 'evercraft'
