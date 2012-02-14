@@ -67,7 +67,7 @@ sonar {
 			//props['dynamicAnalysis'] = 'false'
 			props['sonar.cpd.grvy.skip'] = 'true'
 			props['dynamicAnalysis'] = 'reuseReports'
-			props['sonar.cobertura.reportPath'] = "${reportsDir}/cobertura/coverage.xml"
+			props['sonar.cobertura.reportPath'] = "${reporting.baseDir}/cobertura/coverage.xml"
 		}
 	}
 }

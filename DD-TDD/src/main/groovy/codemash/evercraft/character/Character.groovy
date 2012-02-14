@@ -1,6 +1,7 @@
 package codemash.evercraft.character
 
 import codemash.evercraft.classes.*
+import codemash.evercraft.races.Race
 
 class Character {
 	def name
@@ -8,6 +9,7 @@ class Character {
 	int armorClass = 10, damage = 0, experiencePoints = 0, level = 1, attackAdjustment = 0
 	Ability strength, dexterity, constitution, wisdom, intelligence, charisma
 	Alignment alignment = Alignment.NEUTRAL
+	Race race;
 	ClassType classType
 	
 	public Character(String aName) {
@@ -19,6 +21,7 @@ class Character {
 		intelligence = new Ability(AbilityName.INTELLIGENCE)
 		charisma = new Ability(AbilityName.CHARISMA)
 		classType = ClassType.PEASANT;
+		race = Race.HUMAN;
 	}
 	
 	public Character(String aName, ClassType myClassType) {
