@@ -48,4 +48,7 @@ class Character {
 		return classType.calculateCriticalHitDamage(damage)
 	}
 	
+	int getEffectiveArmorClass() {
+		return classType.effectiveArmorClass(this)
+	}
 }

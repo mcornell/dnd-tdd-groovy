@@ -50,7 +50,8 @@ class Combat {
 	}
 	
 	private static int getBaseDamage(Character attacker) {
-		return BASE_DAMAGE + attacker.strength.modifier
+		int damage = attacker.classType.getBaseDamage()
+		return damage + attacker.strength.modifier
 	}
 	
 	private static addExperience(Character attacker) {
