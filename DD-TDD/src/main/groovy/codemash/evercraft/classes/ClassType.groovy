@@ -84,31 +84,8 @@ enum ClassType {
 				return 1
 		}
 	}
+
+
 	
-	def victimAdjustment(Character victim) {
-		switch (this) {
-			case PALADIN:
-				if (victim.alignment == Alignment.EVIL) return 2
-			default:
-				return 0
-		}
-	}
-	
-	def getAlignmentDamage(Character victim) {
-		switch (this) {
-			case PALADIN:
-				if (victim.alignment == Alignment.EVIL) return 2
-			default:
-				return 0
-		}
-	}
-	
-	def damageMultiplier(Character victim) {
-		switch (this) {
-			case PALADIN:
-				if (victim.alignment == Alignment.EVIL) return 3
-			default:
-				return 1
-		}
-	}
+
 }

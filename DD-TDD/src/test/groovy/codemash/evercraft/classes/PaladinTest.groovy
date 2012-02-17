@@ -34,7 +34,7 @@ class PaladinTest extends Specification {
 
 	def "Paladins get +2 to damage when attacking evil characters"() {
 		expect:
-			paladin.classType.getAlignmentDamage(victim) == damageAdjustment
+			Combat.getAlignmentDamage(paladin, victim) == damageAdjustment
 		where:
 			victim           << [evilVictim, neutralVictim]
 			damageAdjustment << [2         , 0            ]

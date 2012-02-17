@@ -76,8 +76,6 @@ class Character {
 	}
 	
 	int getModifier(AbilityName ability) {
-		println "base modifier: ${abilities.get(ability).modifier}"
-		println "race modifier: ${race.getModifier(ability)}"
 		return abilities.get(ability).modifier + race.getModifier(ability)
 	}
 }

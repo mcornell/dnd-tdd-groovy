@@ -1,6 +1,8 @@
 package codemash.evercraft.combat
 
 import codemash.evercraft.character.Character;
+import static codemash.evercraft.classes.ClassType.*;
+import static codemash.evercraft.character.Alignment.*;
 
 class Combat {
 	static final int CRITICAL_HIT = 20
@@ -30,15 +32,24 @@ class Combat {
 	}
 	
 	private static boolean hit(Character attacker, Character victim, int roll) {
-		int attackValue = roll + attacker.attackAdjustment + attacker.classType.victimAdjustment(victim)
+		int attackValue = roll + attacker.attackAdjustment + victimAdjustment(attacker, victim)
 		
 		int defenceValue = attacker.classType.ignoreDefence(victim)
 		
 		return (roll > CRITICAL_MISS && attackValue >= defenceValue)
 	}
 	
+	private static int victimAdjustment(Character attacker, Character victim) {
+		switch (attacker.classType) {
+			case PALADIN:
+				if (victim.alignment == EVIL) return 2
+			default:
+				return 0
+		}
+	}
+	
 	private static applyDamage(Character attacker, Character victim, int roll) {
-		int damage = attacker.classType.damageMultiplier(victim) * getBaseDamage(attacker)
+		int damage = damageMultiplier(attacker, victim) * getBaseDamage(attacker)
 		
 		if (roll == CRITICAL_HIT) {
 			damage = attacker.calculateCriticalHitDamage(damage)
@@ -46,8 +57,26 @@ class Combat {
 			damage = Math.max(damage, 1)
 		}
 		
-		damage += attacker.getAlignmentDamage(victim)
+		damage += getAlignmentDamage(attacker, victim)
 		victim.damage += damage
+	}
+	
+	private static int damageMultiplier(Character attacker, Character victim) {
+		switch (attacker.classType) {
+			case PALADIN:
+				if (victim.alignment == EVIL) return 3
+			default:
+				return 1
+		}
+	}
+	
+	private static int getAlignmentDamage(Character attacker, Character victim) {
+		switch (attacker.classType) {
+			case PALADIN:
+				if (victim.alignment == EVIL) return 2
+			default:
+				return 0
+		}
 	}
 	
 	private static int getBaseDamage(Character attacker) {
