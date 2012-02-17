@@ -57,23 +57,7 @@ enum ClassType {
 		}
 	}
 	
-	def effectiveArmorClass(Character self) {
-		int armorClass = self.armorClass
-		switch (this) {
-			case WAR_MONK:
-				armorClass += self.wisdom.modifier
-			default:
-				return armorClass + self.dexterity.modifier
-		}
-	}
-	
-	def ignoreDefence(Character victim) {
-		switch (this) {
-			case ROGUE:
-				return effectiveArmorClass(victim) - victim.dexterity.modifier
-			default:
-				return effectiveArmorClass(victim)
-		}
-	}
+
+
 
 }

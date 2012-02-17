@@ -34,7 +34,7 @@ class Combat {
 	private static boolean hit(Character attacker, Character victim, int roll) {
 		int attackValue = roll + attacker.attackAdjustment + victimAdjustment(attacker, victim)
 		
-		int defenceValue = attacker.classType.ignoreDefence(victim)
+		int defenceValue = ignoreDefence(attacker, victim)
 		
 		return (roll > CRITICAL_MISS && attackValue >= defenceValue)
 	}
@@ -47,6 +47,26 @@ class Combat {
 				return 0
 		}
 	}
+	
+	private static int ignoreDefence(Character attacker, Character victim) {
+		switch (attacker.classType) {
+			case ROGUE:
+				return effectiveArmorClass(victim) - victim.dexterity.modifier
+			default:
+				return effectiveArmorClass(victim)
+		}
+	}
+	
+	private static int effectiveArmorClass(Character self) {
+		int armorClass = self.armorClass
+		switch (self.classType) {
+			case WAR_MONK:
+				armorClass += self.wisdom.modifier
+			default:
+				return armorClass + self.dexterity.modifier
+		}
+	}
+	
 	
 	private static applyDamage(Character attacker, Character victim, int roll) {
 		int damage = damageMultiplier(attacker, victim) * getBaseDamage(attacker)

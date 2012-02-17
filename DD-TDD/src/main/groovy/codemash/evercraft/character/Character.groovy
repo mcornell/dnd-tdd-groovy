@@ -2,6 +2,7 @@ package codemash.evercraft.character
 
 import codemash.evercraft.classes.*
 import codemash.evercraft.races.Race
+import codemash.evercraft.combat.Combat
 
 class Character {
 	def name
@@ -68,7 +69,7 @@ class Character {
 	}
 	
 	int getEffectiveArmorClass() {
-		return classType.effectiveArmorClass(this)
+		return Combat.effectiveArmorClass(this)
 	}
 	
 	int getAlignmentDamage(Character victim) {
