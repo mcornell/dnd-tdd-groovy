@@ -75,17 +75,5 @@ enum ClassType {
 				return effectiveArmorClass(victim)
 		}
 	}
-	
-	def getBaseDamage() {
-		switch (this) {
-			case WAR_MONK:
-				return 3
-			default:
-				return 1
-		}
-	}
-
-
-	
 
 }

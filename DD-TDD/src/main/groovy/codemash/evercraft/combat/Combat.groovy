@@ -80,7 +80,11 @@ class Combat {
 	}
 	
 	private static int getBaseDamage(Character attacker) {
-		int damage = attacker.classType.getBaseDamage()
+		def damage = 1;
+		switch (attacker.classType) {
+			case WAR_MONK:
+				damage = 3
+		}
 		return damage + attacker.strength.modifier
 	}
 	
