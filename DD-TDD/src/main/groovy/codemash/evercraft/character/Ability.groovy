@@ -26,7 +26,3 @@ class Ability {
 		return (scoreRange.contains(score))
 	}
 }
-
-enum AbilityName {
-	STRENGTH, DEXTERITY, CONSTITUTION, WISDOM, INTELLIGENCE, CHARISMA
-}

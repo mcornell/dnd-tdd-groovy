@@ -61,11 +61,14 @@ class Character {
 	}
 	
 	int getAttackAdjustment() {
-		return classType.levelAttackAdjustment(getLevel()) + classType.abilityAttackAdjustment(this)
+		return classType.levelAttackAdjustment(getLevel()) + abilities.get(classType.abilityAttackModifier()).modifier
 	}
 	
 	int calculateCriticalHitDamage(int damage) {
-		return classType.calculateCriticalHitDamage(damage)
+		if (damage < 1) {
+			return  1
+		} 
+		return damage * classType.criticalHitMultiplier()
 	}
 	
 	int getEffectiveArmorClass() {

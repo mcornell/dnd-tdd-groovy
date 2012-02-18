@@ -1,7 +1,7 @@
 package codemash.evercraft.classes
 
-import codemash.evercraft.character.Character
-import codemash.evercraft.character.Alignment
+import static codemash.evercraft.character.AbilityName.*
+import codemash.evercraft.character.AbilityName
 
 enum ClassType {
 	FIGHTER, ROGUE, WAR_MONK, PALADIN, PEASANT
@@ -35,25 +35,21 @@ enum ClassType {
 		}
 	}
 	
-	def abilityAttackAdjustment(attacker) {
+	AbilityName abilityAttackModifier() {
 		switch (this) {
-				case ROGUE:
-					return attacker.dexterity.modifier
-				default:
-					return attacker.strength.modifier
+			case ROGUE:
+				return DEXTERITY
+			default:
+				return STRENGTH
 		}
 	}
 	
-	def calculateCriticalHitDamage(int damage) {
-		if (damage < 1) {
-			return  1
-		} else {
-			switch (this) {
-				case ROGUE:
-					return damage * 3
-				default:
-					return damage * 2
-			}
+	def criticalHitMultiplier() {
+		switch (this) {
+			case ROGUE:
+				return 3
+			default:
+				return 2
 		}
 	}
 	
