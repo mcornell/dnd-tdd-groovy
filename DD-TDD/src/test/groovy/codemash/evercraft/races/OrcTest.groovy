@@ -47,4 +47,9 @@ class OrcTest extends Specification {
 			score    << [10, 7,  5, 19]
 			modifier << [-1 , -3, -4,  3]
 	}
+	
+	def "Orcs have a +2 to Armor Class due to thick hide"() {
+		expect:
+			orc.getEffectiveArmorClass() == 12
+	}
 }
