@@ -1,6 +1,6 @@
 package codemash.evercraft.character
 
-import codemash.evercraft.classes.*
+import codemash.evercraft.classes.ClassType
 import codemash.evercraft.races.Race
 import codemash.evercraft.combat.Combat
 
@@ -10,18 +10,18 @@ class Character {
 	int armorClass = 10, damage = 0, experiencePoints = 0, level = 1, attackAdjustment = 0
 	Ability strength, dexterity, constitution, wisdom, intelligence, charisma
 	Alignment alignment = Alignment.NEUTRAL
-	def abilities = new EnumMap(AbilityName.class) 
+	def abilities = new EnumMap(AbilityName) 
 	Race race;
 	ClassType classType
 	
-	public Character(String aName) {
+	Character(String aName) {
 		name = aName
 		instantiateAbilities()
 		classType = ClassType.PEASANT;
 		race = Race.HUMAN;
 	}
 	
-	public Character(String aName, ClassType myClassType) {
+	Character(String aName, ClassType myClassType) {
 		this(aName)
 		classType = myClassType
 	}
@@ -49,37 +49,37 @@ class Character {
 	}
 
 	boolean isAlive() {
-		return getHitPoints() > damage
+		getHitPoints() > damage
 	}
 	
 	int getHitPoints() {
-		return Math.max((classType.hitPointsPerLevel() + constitution.modifier) * getLevel(), getLevel())
+		Math.max((classType.hitPointsPerLevel() + constitution.modifier) * getLevel(), getLevel())
 	}
 	
 	int getLevel() {
-		return Math.floor(experiencePoints / 1000) + 1
+		Math.floor(experiencePoints / 1000) + 1
 	}
 	
 	int getAttackAdjustment() {
-		return classType.levelAttackAdjustment(getLevel()) + abilities.get(classType.abilityAttackModifier()).modifier
+		classType.levelAttackAdjustment(getLevel()) + abilities.get(classType.abilityAttackModifier()).modifier
 	}
 	
 	int calculateCriticalHitDamage(int damage) {
 		if (damage < 1) {
 			return  1
 		} 
-		return damage * classType.criticalHitMultiplier()
+		damage * classType.criticalHitMultiplier()
 	}
 	
 	int getEffectiveArmorClass() {
-		return Combat.effectiveArmorClass(this)
+		Combat.effectiveArmorClass(this)
 	}
 	
 	int getAlignmentDamage(Character victim) {
-		return classType.getAlignmentDamage(victim)
+		classType.getAlignmentDamage(victim)
 	}
 	
 	int getModifier(AbilityName ability) {
-		return abilities.get(ability).modifier + race.getModifier(ability)
+		abilities.get(ability).modifier + race.getModifier(ability)
 	}
 }

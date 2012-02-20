@@ -44,7 +44,7 @@ enum ClassType {
 		}
 	}
 	
-	def criticalHitMultiplier() {
+	def criticalHitMultiplier = {
 		switch (this) {
 			case ROGUE:
 				return 3

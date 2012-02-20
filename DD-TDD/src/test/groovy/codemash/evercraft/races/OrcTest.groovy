@@ -17,4 +17,34 @@ class OrcTest extends Specification {
 			score    << [10, 7,  5, 19]
 			modifier << [2 , 0, -1,  6]
 	}
+	
+	def "Orcs have a -1 to intelligence modifiers"() {
+		when:
+			orc.intelligence.score = score
+		then:
+			orc.getModifier(AbilityName.INTELLIGENCE) == modifier
+		where:
+			score    << [10, 7,  5, 19]
+			modifier << [-1 , -3, -4,  3]
+	}
+	
+	def "Orcs have a -1 to wisdom modifiers"() {
+		when:
+			orc.wisdom.score = score
+		then:
+			orc.getModifier(AbilityName.WISDOM) == modifier
+		where:
+			score    << [10, 7,  5, 19]
+			modifier << [-1 , -3, -4,  3]
+	}
+	
+	def "Orcs have a -1 to charisma modifiers"() {
+		when:
+			orc.charisma.score = score
+		then:
+			orc.getModifier(AbilityName.CHARISMA) == modifier
+		where:
+			score    << [10, 7,  5, 19]
+			modifier << [-1 , -3, -4,  3]
+	}
 }
