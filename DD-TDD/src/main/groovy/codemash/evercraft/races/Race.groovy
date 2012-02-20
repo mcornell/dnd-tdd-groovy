@@ -1,7 +1,7 @@
 package codemash.evercraft.races
 
+import static codemash.evercraft.character.AbilityName.*
 import codemash.evercraft.character.AbilityName
-import static codemash.evercraft.character.AbilityName.*;
 
 enum Race {
 	HUMAN, ORC

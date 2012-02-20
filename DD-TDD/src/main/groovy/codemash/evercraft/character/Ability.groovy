@@ -1,4 +1,4 @@
-package codemash.evercraft.character;
+package codemash.evercraft.character
 
 class Ability {
 	def scoreRange = 1..20
@@ -6,7 +6,7 @@ class Ability {
 	AbilityName name
 	int score = 10
 	
-	public Ability(AbilityName aName) {
+	Ability(AbilityName aName) {
 		name = aName
 	}
 	
@@ -19,10 +19,10 @@ class Ability {
 	}
 	
 	int getModifier() {
-		return ( Math.floor( score/2 ) - 5)	
+		Math.floor( score/2 ) - 5	
 	}
 	
 	private boolean validScore(int score) {
-		return (scoreRange.contains(score))
+		scoreRange.contains(score)
 	}
 }
